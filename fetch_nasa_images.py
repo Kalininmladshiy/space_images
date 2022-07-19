@@ -3,13 +3,8 @@ import os
 import argparse
 from urllib.parse import urlparse
 from dotenv import load_dotenv
-
-
-def download_pictures(url, path_to_pictures, filename):
-    response = requests.get(url)
-    response.raise_for_status()
-    with open(f"{path_to_pictures}{filename}", 'wb') as file:
-        file.write(response.content)
+from function_for_determining_file_extension import get_file_extension
+from function_for_download_pictures import download_pictures
 
 
 def fetch_nasa_launch(url, payload, path_to_pictures):
@@ -21,13 +16,6 @@ def fetch_nasa_launch(url, payload, path_to_pictures):
             path_to_pictures,
             f'nasa_{photo_number}{get_file_extension(day_nasa_photo["url"])}',
         )
-
-
-def get_file_extension(url):
-    url_parts = urlparse(url)
-    path_with_file_extension = url_parts.path
-    path, file_extension = os.path.splitext(path_with_file_extension)
-    return file_extension
 
 
 if __name__ == '__main__':

@@ -2,6 +2,8 @@ import requests
 import os
 import argparse
 from urllib.parse import urlparse
+from function_for_determining_file_extension import get_file_extension
+from function_for_download_pictures import download_pictures
 
 
 def fetch_spacex_launch(url, path_to_pictures, flight_id='latest'):
@@ -14,20 +16,6 @@ def fetch_spacex_launch(url, path_to_pictures, flight_id='latest'):
             path_to_pictures,
             f'spacex_{photo_number}{get_file_extension(photo)}'
         )
-
-
-def download_pictures(url, path_to_pictures, filename):
-    response = requests.get(url)
-    response.raise_for_status()
-    with open(f"{path_to_pictures}{filename}", 'wb') as file:
-        file.write(response.content)
-
-
-def get_file_extension(url):
-    url_parts = urlparse(url)
-    path_with_file_extension = url_parts.path
-    path, file_extension = os.path.splitext(path_with_file_extension)
-    return file_extension
 
 
 if __name__ == '__main__':
