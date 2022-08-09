@@ -30,14 +30,26 @@
 
 1. Скачиваем проект из репозитория
 1. Устанавливаем менеджер управления зависимостями и виртуальным окружением `pipenv`:  
-`$ pip install --user pipenv`
-1. Переходим в папку проекта:  
-`$ cd project_folder`
-1. Запускаем виртуальное окружение:  
-`$ pipenv shell`
-1. Устанавливаем зависимости из файла `requirements.txt`:  
-`pipenv install -r requirements.txt`
-1. Запускаем файл:  
-`$ space_photos.py`
-1. Запускаем файл:  
-`$ space_telegram_bot.py`
+```
+$ pip install --user pipenv
+```
+3. Переходим в папку проекта:  
+```
+$ cd project_folder
+```
+4. Запускаем виртуальное окружение:  
+```
+$ pipenv shell
+```
+5. Устанавливаем зависимости из файла `requirements.txt`:  
+```
+pipenv install -r requirements.txt
+```
+6. Запускаем файл:  
+```
+$ space_photos.py
+```
+7. Запускаем файл:  
+```
+$ space_telegram_bot.py
+```
