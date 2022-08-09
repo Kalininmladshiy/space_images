@@ -6,6 +6,7 @@ from urllib.parse import urlparse
 from dotenv import load_dotenv
 from function_for_determining_file_extension import get_file_extension
 from function_for_download_pictures import download_pictures
+from pathlib import Path
 
 
 def fetch_epic_nasa_launch(
@@ -38,7 +39,7 @@ if __name__ == '__main__':
     )
     parser.add_argument("--url", help="Ссылка на скачивание")
     args = parser.parse_args()
-    path_to_pictures = './images/'
+    path_to_pictures = Path.cwd() / 'images'
     epic_nasa_payload = {
         'api_key': nasa_api_key,
     }

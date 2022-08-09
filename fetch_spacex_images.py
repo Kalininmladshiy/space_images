@@ -4,6 +4,7 @@ import argparse
 from urllib.parse import urlparse
 from function_for_determining_file_extension import get_file_extension
 from function_for_download_pictures import download_pictures
+from pathlib import Path
 
 
 def fetch_spacex_launch(url, path_to_pictures, flight_id='latest'):
@@ -19,7 +20,7 @@ def fetch_spacex_launch(url, path_to_pictures, flight_id='latest'):
 
 
 if __name__ == '__main__':
-    path_to_pictures = './images/'
+    path_to_pictures = Path.cwd() / 'images'
     parser = argparse.ArgumentParser(
         description='Программа для скачивания фото SpaceX'
     )
