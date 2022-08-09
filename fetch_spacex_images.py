@@ -12,9 +12,9 @@ def fetch_spacex_launch(url, path_to_pictures, flight_id='latest'):
     spacex_photos = response.json()['links']['flickr']['original']
     for photo_number, photo in enumerate(spacex_photos):
         download_pictures(
-            photo,
             path_to_pictures,
-            f'spacex_{photo_number}{get_file_extension(photo)}'
+            f'spacex_{photo_number}{get_file_extension(photo)}',
+            photo,
         )
 
 
