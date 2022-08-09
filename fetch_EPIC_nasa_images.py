@@ -24,9 +24,9 @@ def fetch_epic_nasa_launch(
         response = requests.get(second_epic_nasa_url, params=payload)
         response.raise_for_status()
         download_pictures(
-            response.url,
             path_to_pictures,
             f'epic_nasa_{epic_photo_number}{get_file_extension(response.url)}',
+            response.url,
         )
 
 
