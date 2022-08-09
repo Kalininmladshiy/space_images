@@ -1,5 +1,6 @@
 import requests
 import argparse
+from pathlib import Path
 
 
 def download_pictures(
@@ -9,7 +10,7 @@ def download_pictures(
      ):
     response = requests.get(url)
     response.raise_for_status()
-    with open(f"{path_to_pictures}{filename}", 'wb') as file:
+    with open(Path() / path_to_pictures / filename, 'wb') as file:
         file.write(response.content)
 
 
@@ -20,8 +21,7 @@ if __name__ == '__main__':
     parser.add_argument("--url", help="Ссылка на картинку")
     args = parser.parse_args()
     filename = 'space.jpeg'
-    path_to_pictures = './images/'
-    filename = 'space.jpeg'
+    path_to_pictures = Path.cwd() / 'images' 
     if args.url:
         try:
             download_pictures(path_to_pictures, filename, args.url)
