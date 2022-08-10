@@ -19,8 +19,8 @@ def fetch_epic_nasa_launch(
     response.raise_for_status()
     for epic_photo_number, epic_id_date in enumerate(response.json()[:count_photo]):
         image_id = epic_id_date['image']
-        aDate = datetime.date.fromisoformat(epic_id_date['date'].split(' ')[0])
-        formatted_date = aDate.strftime("%Y/%m/%d")
+        a_date = datetime.date.fromisoformat(epic_id_date['date'].split(' ')[0])
+        formatted_date = a_date.strftime("%Y/%m/%d")
         second_epic_nasa_url = f'https://api.nasa.gov/EPIC/archive/natural/{formatted_date}/png/{image_id}.png'
         response = requests.get(second_epic_nasa_url, params=payload)
         response.raise_for_status()
