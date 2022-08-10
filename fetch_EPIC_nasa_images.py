@@ -4,8 +4,8 @@ import datetime
 import argparse
 from urllib.parse import urlparse
 from dotenv import load_dotenv
-from function_for_determining_file_extension import get_file_extension
-from function_for_download_pictures import download_pictures
+from utils import get_file_extension
+from utils import download_pictures
 from pathlib import Path
 
 
