@@ -8,7 +8,7 @@ from pathlib import Path
 
 
 def fetch_spacex_launch(url, path_to_pictures, flight_id='latest'):
-    response = requests.get(url + flight_id)
+    response = requests.get(f'{url}{flight_id}')
     response.raise_for_status()
     spacex_photos = response.json()['links']['flickr']['original']
     for photo_number, photo in enumerate(spacex_photos):
