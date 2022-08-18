@@ -7,7 +7,11 @@ from utils import download_pictures
 from pathlib import Path
 
 
-def fetch_spacex_launch(url, path_to_pictures, flight_id='latest'):
+def fetch_spacex_launch(
+    path_to_pictures,
+    flight_id='latest',
+    url='https://api.spacexdata.com/v5/launches/',
+     ):
     response = requests.get(f'{url}{flight_id}')
     response.raise_for_status()
     spacex_photos = response.json()['links']['flickr']['original']
@@ -24,7 +28,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description='Программа для скачивания фото SpaceX'
     )
-    parser.add_argument("url", help="ссылка на фотографии запуска")
     parser.add_argument(
         "--flight_id",
         help="id полета, фотографии которого хотим скачать",
@@ -33,7 +36,6 @@ if __name__ == '__main__':
     if args.flight_id:
         try:
             fetch_spacex_launch(
-                args.url,
                 path_to_pictures,
                 args.flight_id
             )
@@ -42,7 +44,6 @@ if __name__ == '__main__':
     else:
         try:
             fetch_spacex_launch(
-                args.url,
                 path_to_pictures,
             )
         except requests.exceptions.HTTPError as e:
