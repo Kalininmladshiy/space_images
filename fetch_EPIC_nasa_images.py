@@ -37,18 +37,19 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description="Программа для скачивания эпичных фото земли от NASA"
     )
+    parser.add_argument("num", type=int,
+                        help="Количество фотографий для скачивания")    
     parser.add_argument("--url", help="Ссылка на скачивание")
     args = parser.parse_args()
     path_to_pictures = Path.cwd() / 'images'
     epic_nasa_payload = {
         'api_key': nasa_api_key,
     }
-    count_epic_photo = 2
     if args.url:
         try:
             fetch_epic_nasa_launch(
                 epic_nasa_payload,
-                count_epic_photo,
+                args.num,
                 path_to_pictures,
                 args.url,
             )
@@ -58,7 +59,7 @@ if __name__ == '__main__':
         try:
             fetch_epic_nasa_launch(
                 epic_nasa_payload,
-                count_epic_photo,
+                args.num,
                 path_to_pictures,
             )
         except requests.exceptions.HTTPError as e:
