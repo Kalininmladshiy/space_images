@@ -27,15 +27,17 @@ if __name__ == '__main__':
     load_dotenv()
     nasa_api_key = os.environ['NASA_API_KEY']
     path_to_pictures = Path.cwd() / 'images'
-    nasa_payload = {
-        'api_key': nasa_api_key,
-        'count': 10
-    }
     parser = argparse.ArgumentParser(
         description='Программа для загрузки изображений NASA'
     )
+    parser.add_argument("num", type=int,
+                        help="Количество фотографий для скачивания")    
     parser.add_argument("--url", help="Ссылка для скачивания изображений")
     args = parser.parse_args()
+    nasa_payload = {
+        'api_key': nasa_api_key,
+        'count': args.num
+    }    
     if args.url:
         try:
             fetch_nasa_launch(
