@@ -8,20 +8,19 @@ from dotenv import load_dotenv
 
 def send_images_to_telegram(images, chat_id, sleep=14400):
     count = 0
+    files_path = get_files_path(images)
     try:
         while True:
-            for address, dirs, files in images:
-                for file in files:
-                    file_adress = os.path.join(address, file)
-                    bot.send_photo(
-                        chat_id=chat_id,
-                        photo=open(file_adress, 'rb'),
-                    )
-                    count += 1
-                    if count >= len(files):
-                        random.shuffle(files)
-                        count = 0
-                    time.sleep(sleep)
+            for file_path in files_path:
+                bot.send_photo(
+                    chat_id=chat_id,
+                    photo=open(file_path, 'rb'),
+                )
+                count += 1
+                if count >= len(files_path):
+                    random.shuffle(files_path)
+                    count = 0
+                time.sleep(sleep)
     except telegram.error.NetworkError:
         if args.delay:
             send_images_to_telegram(
@@ -34,6 +33,16 @@ def send_images_to_telegram(images, chat_id, sleep=14400):
                 images,
                 chat_id,
             )        
+
+
+def get_files_path(dirpath_and_filenames):
+    files_path = []
+    for address, dirs, files in dirpath_and_filenames:
+        for file in files:
+            file_adress = os.path.join(address, file)
+            files_path.append(file_adress)
+    return files_path        
+
 
 if __name__ == '__main__':
     load_dotenv()
