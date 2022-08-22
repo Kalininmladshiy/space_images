@@ -49,7 +49,7 @@ if __name__ == '__main__':
     token = os.environ['TG_TOKEN']
     bot = telegram.Bot(token=token)
     images = list(os.walk('images'))
-    chat_id = os.environ['CHAT_ID_TG']
+    chat_id = os.environ['TG_CHAT_ID']
     parser = argparse.ArgumentParser(
         description='Программа отправляет с задержкой фотографии в телеграм канал'
     )
