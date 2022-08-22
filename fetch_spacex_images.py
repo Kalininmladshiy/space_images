@@ -25,6 +25,7 @@ def fetch_spacex_launch(
 
 if __name__ == '__main__':
     path_to_pictures = Path.cwd() / 'images'
+    Path(path_to_pictures).mkdir(parents=True, exist_ok=True)
     parser = argparse.ArgumentParser(
         description='Программа для скачивания фото SpaceX'
     )
