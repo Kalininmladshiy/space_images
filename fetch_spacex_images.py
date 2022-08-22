@@ -10,8 +10,8 @@ from pathlib import Path
 def fetch_spacex_launch(
     path_to_pictures,
     flight_id,
-    url='https://api.spacexdata.com/v5/launches/',
      ):
+    url='https://api.spacexdata.com/v5/launches/'
     response = requests.get(f'{url}{flight_id}')
     response.raise_for_status()
     spacex_photos = response.json()['links']['flickr']['original']
@@ -39,7 +39,7 @@ if __name__ == '__main__':
         try:
             fetch_spacex_launch(
                 path_to_pictures,
-                args.flight_id
+                args.flight_id,
             )
         except requests.exceptions.HTTPError as e:
             print(e.response.status_code)
