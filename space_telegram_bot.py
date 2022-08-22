@@ -6,7 +6,7 @@ import argparse
 from dotenv import load_dotenv
 
 
-def send_images_to_telegram(images, chat_id, sleep=14400):
+def send_images_to_telegram(images, chat_id, sleep):
     count = 0
     files_path = get_files_path(images)
     try:
@@ -53,17 +53,12 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description='Программа отправляет с задержкой фотографии в телеграм канал'
     )
-    parser.add_argument("--delay", type=int, help="Время задержки")
+    parser.add_argument("--delay", type=int, help="Время задержки", default=14400)
     args = parser.parse_args()
     if args.delay:
         send_images_to_telegram(
             images,
             chat_id,
             sleep=args.delay,
-        )
-    else:
-        send_images_to_telegram(
-            images,
-            chat_id,
         )
         
