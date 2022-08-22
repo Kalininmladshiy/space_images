@@ -30,6 +30,7 @@ if __name__ == '__main__':
     load_dotenv()
     nasa_api_key = os.environ['NASA_API_KEY']
     path_to_pictures = Path.cwd() / 'images'
+    Path(path_to_pictures).mkdir(parents=True, exist_ok=True)
     parser = argparse.ArgumentParser(
         description='Программа для загрузки изображений NASA'
     )
