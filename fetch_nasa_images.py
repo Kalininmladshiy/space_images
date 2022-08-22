@@ -11,8 +11,8 @@ from pathlib import Path
 def fetch_nasa_launch(
     path_to_pictures,
     payload,
-    url='https://api.nasa.gov/planetary/apod',
      ):
+    url='https://api.nasa.gov/planetary/apod'
     response = requests.get(url, params=payload)
     response.raise_for_status()
     for photo_number, day_nasa_photo in enumerate(response.json()):
@@ -34,28 +34,18 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description='Программа для загрузки изображений NASA'
     )
-    parser.add_argument("num", type=int,
+    parser.add_argument("--num", type=int, default=10,
                         help="Количество фотографий для скачивания")    
-    parser.add_argument("--url", help="Ссылка для скачивания изображений")
     args = parser.parse_args()
-    nasa_payload = {
-        'api_key': nasa_api_key,
-        'count': args.num
-    }    
-    if args.url:
-        try:
-            fetch_nasa_launch(
-                path_to_pictures,
-                nasa_payload,
-                args.url,
-            )
-        except requests.exceptions.HTTPError as e:
-            print(e.response.status_code)
-    else:
-        try:
-            fetch_nasa_launch(
-                path_to_pictures,
-                nasa_payload,
-            )
-        except requests.exceptions.HTTPError as e:
-            print(e.response.status_code)
+    if args.num:
+        nasa_payload = {
+            'api_key': nasa_api_key,
+            'count': args.num
+        }    
+    try:
+        fetch_nasa_launch(
+            path_to_pictures,
+            nasa_payload,
+        )
+    except requests.exceptions.HTTPError as e:
+        print(e.response.status_code)
