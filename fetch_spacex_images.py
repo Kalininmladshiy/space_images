@@ -36,10 +36,7 @@ if __name__ == '__main__':
     )
     args = parser.parse_args()
     if args.flight_id:
-        try:
-            fetch_spacex_launch(
+        fetch_spacex_launch(
                 path_to_pictures,
                 args.flight_id,
             )
-        except requests.exceptions.HTTPError as e:
-            print(e.response.status_code)
