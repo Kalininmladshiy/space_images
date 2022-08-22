@@ -42,6 +42,7 @@ if __name__ == '__main__':
     parser.add_argument("--url", help="Ссылка на скачивание")
     args = parser.parse_args()
     path_to_pictures = Path.cwd() / 'images'
+    Path(path_to_pictures).mkdir(parents=True, exist_ok=True)
     epic_nasa_payload = {
         'api_key': nasa_api_key,
     }
