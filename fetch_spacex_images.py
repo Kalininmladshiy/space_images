@@ -9,7 +9,7 @@ from pathlib import Path
 
 def fetch_spacex_launch(
     path_to_pictures,
-    flight_id='latest',
+    flight_id,
     url='https://api.spacexdata.com/v5/launches/',
      ):
     response = requests.get(f'{url}{flight_id}')
@@ -32,6 +32,7 @@ if __name__ == '__main__':
     parser.add_argument(
         "--flight_id",
         help="id полета, фотографии которого хотим скачать",
+        default='latest',
     )
     args = parser.parse_args()
     if args.flight_id:
@@ -39,13 +40,6 @@ if __name__ == '__main__':
             fetch_spacex_launch(
                 path_to_pictures,
                 args.flight_id
-            )
-        except requests.exceptions.HTTPError as e:
-            print(e.response.status_code)
-    else:
-        try:
-            fetch_spacex_launch(
-                path_to_pictures,
             )
         except requests.exceptions.HTTPError as e:
             print(e.response.status_code)
