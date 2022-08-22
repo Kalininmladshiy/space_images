@@ -42,10 +42,7 @@ if __name__ == '__main__':
             'api_key': nasa_api_key,
             'count': args.num
         }    
-    try:
-        fetch_nasa_launch(
-            path_to_pictures,
-            nasa_payload,
-        )
-    except requests.exceptions.HTTPError as e:
-        print(e.response.status_code)
+    fetch_nasa_launch(
+        path_to_pictures,
+        nasa_payload,
+    )

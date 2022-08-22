@@ -46,11 +46,8 @@ if __name__ == '__main__':
         'api_key': nasa_api_key,
     }
     if args.num:
-        try:
-            fetch_epic_nasa_launch(
-                epic_nasa_payload,
-                args.num,
-                path_to_pictures,
-            )
-        except requests.exceptions.HTTPError as e:
-            print(e.response.status_code)
+        fetch_epic_nasa_launch(
+            epic_nasa_payload,
+            args.num,
+            path_to_pictures,
+        )
