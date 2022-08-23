@@ -16,14 +16,15 @@ def fetch_nasa_launch(
     response = requests.get(url, params=payload)
     response.raise_for_status()
     for photo_number, day_nasa_photo in enumerate(response.json()):
-        try:
-            download_pictures(
-                path_to_pictures,
-                f'nasa_{photo_number}{get_file_extension(day_nasa_photo["url"])}',
-                day_nasa_photo['url'],
-            )
-        except requests.exceptions.MissingSchema:
-            continue
+        if day_nasa_photo['media_type'] == 'image':
+            try:
+                download_pictures(
+                    path_to_pictures,
+                    f'nasa_{photo_number}{get_file_extension(day_nasa_photo["url"])}',
+                    day_nasa_photo['url'],
+                )
+            except requests.exceptions.MissingSchema:
+                continue
 
 
 if __name__ == '__main__':
