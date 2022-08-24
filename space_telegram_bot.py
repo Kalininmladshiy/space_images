@@ -39,8 +39,8 @@ def get_files_path(dirpath_and_filenames):
     files_path = []
     for address, dirs, files in dirpath_and_filenames:
         for file in files:
-            file_adress = os.path.join(address, file)
-            files_path.append(file_adress)
+            file_address = os.path.join(address, file)
+            files_path.append(file_address)
     return files_path        
 
 
