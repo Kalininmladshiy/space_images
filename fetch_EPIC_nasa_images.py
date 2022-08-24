@@ -44,9 +44,8 @@ if __name__ == '__main__':
     epic_nasa_payload = {
         'api_key': nasa_api_key,
     }
-    if args.num:
-        fetch_epic_nasa_launch(
-            epic_nasa_payload,
-            args.num,
-            path_to_pictures,
-        )
+    fetch_epic_nasa_launch(
+        epic_nasa_payload,
+        args.num,
+        path_to_pictures,
+    )

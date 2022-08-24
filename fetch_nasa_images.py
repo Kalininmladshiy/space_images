@@ -37,11 +37,10 @@ if __name__ == '__main__':
     parser.add_argument("--num", type=int, default=10,
                         help="Количество фотографий для скачивания")    
     args = parser.parse_args()
-    if args.num:
-        nasa_payload = {
-            'api_key': nasa_api_key,
-            'count': args.num
-        }    
+    nasa_payload = {
+        'api_key': nasa_api_key,
+        'count': args.num
+    }
     fetch_nasa_launch(
         path_to_pictures,
         nasa_payload,

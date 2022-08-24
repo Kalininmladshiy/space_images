@@ -33,8 +33,7 @@ if __name__ == '__main__':
         default='latest',
     )
     args = parser.parse_args()
-    if args.flight_id:
-        fetch_spacex_launch(
-                path_to_pictures,
-                args.flight_id,
-            )
+    fetch_spacex_launch(
+        path_to_pictures,
+        args.flight_id,
+    )
