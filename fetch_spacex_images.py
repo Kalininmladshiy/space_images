@@ -1,7 +1,5 @@
 import requests
-import os
 import argparse
-from urllib.parse import urlparse
 from utils import get_file_extension
 from utils import download_pictures
 from pathlib import Path
