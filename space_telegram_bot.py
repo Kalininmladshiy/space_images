@@ -40,10 +40,9 @@ if __name__ == '__main__':
     )
     parser.add_argument("--delay", type=int, help="Время задержки", default=14400)
     args = parser.parse_args()
-    if args.delay:
-        send_images_to_telegram(
-            images,
-            chat_id,
-            sleep=args.delay,
-        )
+    send_images_to_telegram(
+        images,
+        chat_id,
+        sleep=args.delay,
+    )
         
