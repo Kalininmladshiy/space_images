@@ -18,6 +18,7 @@ def send_images_to_telegram(images, chat_id, sleep):
                     )
                     time.sleep(sleep)
                 except telegram.error.NetworkError:
+                    time.sleep(600)
                     continue
         random.shuffle(files_path)
 
