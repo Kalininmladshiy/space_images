@@ -16,6 +16,5 @@ def download_pictures(
 
 def get_file_extension(url):
     url_parts = urlparse(url)
-    path_with_file_extension = url_parts.path
-    path, file_extension = os.path.splitext(path_with_file_extension)
+    path, file_extension = os.path.splitext(url_parts.path)
     return file_extension
